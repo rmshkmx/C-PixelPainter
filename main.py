@@ -2,7 +2,7 @@ from PIL import Image
 import pyautogui
 import keyboard, mouse
 import time, os
-import config, image_loader
+import config, image_loader, area_selector
 
 path = input("Image path: ")
 
@@ -10,27 +10,7 @@ is_invert = True if input("invert image? (1 - yes, default - no): ") == "1" else
 
 img = image_loader.load_image(path, is_invert, config.THRESHOLD)
 
-upper_left = list()
-lower_right = list()
-print("click the upper left corner of the area")
-while(True): #setting the upper left corner coordinate
-    coordinates_text = f"X: {pyautogui.position().x}; Y: {pyautogui.position().y}"
-    print(f"{coordinates_text:<50}", end="\r", flush=True)
-    if (mouse.is_pressed(button='left')):
-        while mouse.is_pressed(button='left'): time.sleep(0.01)
-        upper_left.append(pyautogui.position().x)
-        upper_left.append(pyautogui.position().y)
-        break
-
-print("click the lower right corner of the area")
-while(True): #setting the lower right corner coordinate
-    coordinates_text = f"X: {pyautogui.position().x}; Y: {pyautogui.position().y}"
-    print(f"{coordinates_text:<50}", end="\r", flush=True)
-    if (mouse.is_pressed(button='left')):
-        while mouse.is_pressed(button='left'): time.sleep(0.01)
-        lower_right.append(pyautogui.position().x)
-        lower_right.append(pyautogui.position().y)
-        break
+upper_left, lower_right = area_selector.select_area()
 
 final_img = img.resize((lower_right[0]-upper_left[0], lower_right[1]-upper_left[1])) #resizing image
 
