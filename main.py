@@ -1,7 +1,5 @@
-from PIL import Image
-import pyautogui
-import keyboard, mouse
-import time, os
+import keyboard
+import os
 import config
 from core import image_loader, area_selector, painter
 
