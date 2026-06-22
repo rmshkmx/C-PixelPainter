@@ -58,5 +58,3 @@ def run():
     start_button = tk.Button(main, text="Start", command=paint)
     start_button.pack(pady=10)
     main.mainloop()
-
-if __name__ == "__main__": run()
