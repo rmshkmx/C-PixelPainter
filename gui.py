@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
-
+import config
 
 def run():
     def choose_file():
@@ -26,6 +26,7 @@ def run():
     delay_text = tk.Label(main, text="Between clicks delay")
     delay_text.pack()
     delay = tk.Entry(main)
+    delay.insert(0, config.DEFAULT_DELAY)
     delay.pack()
 
     area_label = tk.Label(main, text="upper left: x=0, y=0\nlower right: x=0, y=0")
