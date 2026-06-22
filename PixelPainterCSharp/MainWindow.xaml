@@ -62,7 +62,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Border Background="{Binding ColorBrush}" Width="30" Height="30" CornerRadius="4" BorderBrush="#444" BorderThickness="1"/>
+                                <Border Background="{Binding ColorBrush}" Width="30" Height="30" CornerRadius="4" BorderBrush="#444" BorderThickness="1"
+                                        Cursor="Hand" MouseLeftButtonDown="PaletteColor_MouseLeftButtonDown" ToolTip="Click to copy HEX code" Tag="{Binding}"/>
                                 <TextBlock Grid.Column="1" Text="{Binding PosText}" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="LightGray" TextWrapping="Wrap"/>
                                 <ui:Button Grid.Column="2" Content="Map" CommandParameter="{Binding}" Click="MapColor_Click" Padding="10,5"/>
                             </Grid>

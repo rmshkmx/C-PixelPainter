@@ -123,6 +123,17 @@ namespace PixelPainterCSharp
             }
         }
 
+        private void PaletteColor_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (sender is FrameworkElement fe && fe.Tag is PaletteItem item && item.ColorBrush is SolidColorBrush brush)
+            {
+                var color = brush.Color;
+                string hex = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+                Clipboard.SetText(hex);
+                System.Media.SystemSounds.Beep.Play();
+            }
+        }
+
         private async Task WaitForClickAndSet(Action<MouseController.POINT> onPositionSelected)
         {
             MessageBox.Show("Hover your mouse where you want to set the coordinate and WAIT 3 SECONDS.\nDo not click, just hold the mouse there.", "Map Coordinate", MessageBoxButton.OK, MessageBoxImage.Information);

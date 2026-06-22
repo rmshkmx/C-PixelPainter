@@ -53,8 +53,11 @@ namespace PixelPainterCSharp.Core
                         MouseController.POINT palettePos = kvp.Value;
 
                         // Click the palette to select the color
+                        // We set cursor position first, wait a little to let the UI react, then click, then wait again.
+                        MouseController.SetCursorPos(palettePos.X, palettePos.Y);
+                        PreciseDelay(50);
                         MouseController.Click(palettePos.X, palettePos.Y);
-                        PreciseDelay(100); // Wait 100ms for drawing app to register color change
+                        PreciseDelay(400); // Wait 400ms for drawing app to register color change
 
                         // Draw all pixels of this color
                         for (int x = 0; x < width; x++)
