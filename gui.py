@@ -1,6 +1,11 @@
 import tkinter as tk
 from tkinter import filedialog
+
+
 def run():
+    def choose_file():
+        file_path_label.config(text=filedialog.askopenfilename(filetypes=[("Images", "*.jpg;*.jpeg;*.png")]))
+
     main = tk.Tk()
     main.title("PixelPainter")
     main.geometry("400x300")
@@ -8,10 +13,10 @@ def run():
     label = tk.Label(main, text="PixelPainter")
     label.pack(pady=10)
 
-    file_path = tk.Label(main, text="img.png")
-    file_path.pack()
+    file_path_label = tk.Label(main, text="")
+    file_path_label.pack()
 
-    open_file_button = tk.Button(main, text="Choose file")
+    open_file_button = tk.Button(main, text="Choose file", command=choose_file)
     open_file_button.pack(pady=5)
 
     is_invert_checkmark = tk.Checkbutton(main, text="Invert image")
